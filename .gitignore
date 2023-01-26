@@ -25,8 +25,7 @@ yarn-error.log*
 
 # api keys
 
-apps/api/config.js
-apps/api/config.js
+apps/api/secrets.env
 
 # images and videos
 
