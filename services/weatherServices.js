@@ -1,15 +1,19 @@
-import { apiKey } from "../config.js";
+import dotenv from "dotenv";
+dotenv.config();
 import { WeatherModel } from "../resources/schemasModels.js";
-//import { promises as fs } from "fs";
+
+const openWeatherKey = process.env.KEY_OPENWEATHER;
+console.log("process.env is: ", process.env);
 
 const getLocation = async (name, country, state) => {
-  console.log("api key: ", apiKey);
+  
+  console.log('openWeatherKey is: ', openWeatherKey);
   let result;
   try {
     if (state && state !== "null") {
       console.log("state is present");
       result = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state},${country}&limit=5&appid=${apiKey}`,
+        `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state},${country}&limit=5&appid=${openWeatherKey}`,
         {
           mode: "cors",
         }
@@ -19,7 +23,7 @@ const getLocation = async (name, country, state) => {
     } else {
       console.log("state is not present");
       result = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state}&limit=5&appid=${apiKey}`,
+        `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state}&limit=5&appid=${openWeatherKey}`,
         {
           mode: "cors",
         }
@@ -59,7 +63,7 @@ const getWeather = async (lat, long) => {
   let weather;
   try {
     weather = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${openWeatherKey}`
     );
     const weatherJSON = await weather.json();
     return weatherJSON;
@@ -72,7 +76,7 @@ const getPollutionData = async (lat, long) => {
   let pollution;
   try {
     pollution = await fetch(
-      `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${long}&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${long}&appid=${openWeatherKey}`
     );
     const pollutionJSON = await pollution.json();
     return pollutionJSON;
@@ -135,6 +139,7 @@ const createNewWeatherEntry = async (lat, long, mapTimestamp) => {
 
 export const processPOST = async (name, country, state) => {
   console.log("processPOST function called");
+  console.log('openWeatherKey is: ', openWeatherKey);
   const location = await getLocation(name, country, state);
   console.log("location is: ", location);
   const locationJSON = await location.json();
@@ -159,7 +164,7 @@ export const processPOST = async (name, country, state) => {
       console.log("Entry is older than 15 minutes. Updating entry.");
       const updatedEntry = await createNewWeatherEntry(
         locationJSON[0].lat,
-        locationJSON[0].lon,
+        locationJSON[0].lon
       );
       return updatedEntry;
     } else {
