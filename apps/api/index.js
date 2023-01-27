@@ -13,7 +13,7 @@ app.get("/ping", (_req, res) => {
   res.send("pong");
 });
 
-app.use('/api/weather', weatherRouter);
+app.use("/api/weather", weatherRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
