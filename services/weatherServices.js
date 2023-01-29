@@ -131,8 +131,8 @@ export const processPOST = async (name, country, state) => {
     name: name,
     country: country,
     state: state,
-    lat: locationJSON[0].lat,
-    long: locationJSON[0].lon,
+    lat: locationJSON[0].lat.toFixed(4),
+    long: locationJSON[0].lon.toFixed(4),
   };
   console.log("locationJSON[0] is: ", locationJSON[0]);
   console.log("locationJSON[0].lat is: ", locationJSON[0].lat);
