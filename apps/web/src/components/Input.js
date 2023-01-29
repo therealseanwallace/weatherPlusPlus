@@ -9,7 +9,7 @@ const Input = (props) => {
         <input
           type="text"
           placeholder="Enter a town or city"
-          onChange={props.setName}
+          onChange={(e) => props.setName(e.target.value)}
           name="name"
         />
         <CountryDropdown

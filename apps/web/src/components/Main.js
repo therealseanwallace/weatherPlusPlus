@@ -10,7 +10,7 @@ const Main = () => {
   const submitLocation = async (e) => {
     e.preventDefault();
     console.log("submitLocation function called. e is: ", e);
-    const weather = await getWeather({name, country, region});
+    const weather = await getWeather(name, country, region);
     console.log('main - weather is: ', weather);
   }
   

@@ -1,12 +1,26 @@
 import mongoose from "mongoose";
 import express from "express";
 import weatherRouter from "./routes/weatherRouter.js";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
 
 const PORT = 3001;
+const whitelist = ["http://localhost:3000"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.get("/ping", (_req, res) => {
   console.log("someone pinged here!!" + new Date());
