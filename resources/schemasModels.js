@@ -9,7 +9,6 @@ const TestSchema = new Schema({
 
 const WeatherSchema = new Schema({
   cityName: String,
-  country: String,
   latitude: Number,
   longitude: Number,
   timezone: String,

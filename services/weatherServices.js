@@ -91,6 +91,7 @@ const processImage = async (image) => {
   const buffer = Buffer.from(arrayBuffer);
   return buffer;
 };
+
 const createNewWeatherEntry = async (params) => {
   console.log("createNewWeatherEntry function called, params is: ", params);
   const { name, country, state, lat, long } = params;
@@ -105,8 +106,6 @@ const createNewWeatherEntry = async (params) => {
 
   // populates the new entry with data from weather and pollution APIs
   newEntry.cityName = name;
-  newEntry.country = country;
-  newEntry.state = state;
   newEntry.latitude = lat;
   newEntry.longitude = long;
   newEntry.timezone = weather.timezone;
@@ -123,7 +122,7 @@ const createNewWeatherEntry = async (params) => {
 };
 
 export const processPOST = async (name, country, state) => {
-  console.log("processPOST function called");
+  console.log("processPOST function called. name, country, state are: ", name, country, state);
   console.log("openWeatherKey is: ", openWeatherKey);
   const location = await getLocation(name, country, state);
   console.log("location is: ", location);
