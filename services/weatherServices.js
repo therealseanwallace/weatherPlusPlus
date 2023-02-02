@@ -6,10 +6,10 @@ const openWeatherKey = process.env.KEY_OPENWEATHER;
 console.log("process.env is: ", process.env);
 
 const getLocation = async (name, country, state) => {
-  console.log("openWeatherKey is: ", openWeatherKey);
+  console.log("getLocation function called. name, country, state are: ", name, country, state);
   let result;
   try {
-    if (state && state !== "null") {
+    if (state && state !== "none") {
       console.log("state is present");
       result = await fetch(
         `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state},${country}&limit=5&appid=${openWeatherKey}`,
@@ -22,7 +22,7 @@ const getLocation = async (name, country, state) => {
     } else {
       console.log("state is not present");
       result = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state}&limit=5&appid=${openWeatherKey}`,
+        `https://api.openweathermap.org/geo/1.0/direct?q=${name},${country}&limit=5&appid=${openWeatherKey}`,
         {
           mode: "cors",
         }
