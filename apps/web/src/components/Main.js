@@ -1,35 +1,68 @@
 import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import getWeather from "../helpers/getWeather";
+import CurrentWeather from "./CurrentWeather";
+import HourlyForecastContainer from "./HourlyForecastContainer";
 
 const Main = () => {
   let [name, setName] = useState("");
   let [country, setCountry] = useState("");
   let [region, setRegion] = useState("");
+  let [weather, setWeather] = useState(false);
+  let [preferredUnit, setPreferredUnit] = useState("metric");
 
-  const submitLocation = async (e) => {
+  async function submitLocation(e) {
     e.preventDefault();
-    console.log("submitLocation function called. e is: ", e);
-    const weather = await getWeather(name, country, region);
-    console.log('main - weather is: ', weather);
+    const newWeather = await getWeather(name, country, region);
+    setWeather(await newWeather);
   }
   
-  return (
-    <div className="main-container">
-      <div className="upper-container">
-        <Input submitLocation={submitLocation} 
-          setName={setName}
-          setCountry={setCountry}
-          setRegion={setRegion}
-          name={name}
-          country={country}
-          region={region}
-        />
-      </div>
 
-      <div className="lower-container"></div>
-    </div>
-  );
+
+  if (!weather) {
+    return (
+      <div className="main-container">
+        <div className="upper-container">
+          <Input submitLocation={submitLocation} 
+            setName={setName}
+            setCountry={setCountry}
+            setRegion={setRegion}
+            name={name}
+            country={country}
+            region={region}
+          />
+        </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="main-container">
+        <div className="upper-container">
+          <Input submitLocation={submitLocation} 
+            setName={setName}
+            setCountry={setCountry}
+            setRegion={setRegion}
+            name={name}
+            country={country}
+            region={region}
+          />
+          <CurrentWeather 
+            location={weather.cityName}
+            currentWeather={weather.current}
+            high={weather.daily[0].temp.max}
+            low={weather.daily[0].temp.min}
+            preferredUnit={preferredUnit}
+          />
+        </div>
+        <div className="lower-container">
+          <HourlyForecastContainer 
+            hourly={weather.hourly}
+          />
+        </div>
+      </div>
+    )
+  }
+
 };
 
 export default Main;
