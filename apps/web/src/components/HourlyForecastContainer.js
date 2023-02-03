@@ -11,6 +11,9 @@ const HourlyForecastContainer = (props) => {
             <HourlyForecast
               forecast={forecast}
               preferredUnit={props.preferredUnit}
+              sunrise={props.sunrise}
+              sunset={props.sunset}
+              dt={props.dt}
             />
           </div>
         );

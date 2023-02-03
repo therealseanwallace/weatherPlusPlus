@@ -55,8 +55,12 @@ const Main = () => {
           />
         </div>
         <div className="lower-container">
-          <HourlyForecastContainer 
+          <HourlyForecastContainer
+            weather = {weather}
             hourly={weather.hourly}
+            sunrise = {weather.current.sunrise}
+            sunset = {weather.current.sunset}
+            dt={weather.current.dt}
           />
         </div>
       </div>
