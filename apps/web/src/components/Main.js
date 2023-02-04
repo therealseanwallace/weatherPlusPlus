@@ -61,6 +61,7 @@ const Main = () => {
             sunrise = {weather.current.sunrise}
             sunset = {weather.current.sunset}
             dt={weather.current.dt}
+            preferredUnit={preferredUnit}
           />
         </div>
       </div>

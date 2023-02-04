@@ -1,13 +1,11 @@
 import React from "react";
 import HourlyForecast from "./HourlyForecast";
-import convertTimesFromUnix from "../helpers/convertTimesFromUnix";
 
 const HourlyForecastContainer = (props) => {
   console.log("hourly forecast container props are: ", props);
   return (
     <div className={"hourly-forecast-container"}>
       {props.hourly.map((forecast) => {
-        const time = convertTimesFromUnix(forecast.dt, props.weather.timezoneOffset)
         return (
           <div key={forecast.dt}>
             <HourlyForecast
@@ -15,7 +13,9 @@ const HourlyForecastContainer = (props) => {
               preferredUnit={props.preferredUnit}
               sunrise={props.sunrise}
               sunset={props.sunset}
-              time={time}
+              dt={forecast.dt}
+              timezone={props.weather.timezone}
+              timezoneOffset={props.weather.timezoneOffset}
             />
           </div>
         );

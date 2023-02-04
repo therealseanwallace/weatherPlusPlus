@@ -1,14 +1,13 @@
-const convertTemps = (temps, unit) => {
+const convertTemps = (kelvin, unit) => {
   const Converter = require("node-temperature-converter");
-  const converter = new Converter.Kelvin(temps);
+  const converter = new Converter.Kelvin(kelvin);
   let convertedTemps;
   if (unit === "metric") {
     convertedTemps = converter.toCelsius().toFixed(0) + "°C";
-  } else if (unit === "imperial") {
-    convertedTemps = converter.toFahrenheit().toFixed(0) + "°F";
   } else {
-    convertedTemps = converter.toKelvin().toFixed(0) + "°K";
+    convertedTemps = converter.toFahrenheit().toFixed(0) + "°F";
   }
+  return convertedTemps;
 }
 
 export default convertTemps;
