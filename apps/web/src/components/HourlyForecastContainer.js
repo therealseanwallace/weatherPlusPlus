@@ -14,6 +14,7 @@ const HourlyForecastContainer = (props) => {
               sunrise={props.sunrise}
               sunset={props.sunset}
               dt={props.dt}
+              timezoneOffset={props.weather.timezoneOffset}
             />
           </div>
         );

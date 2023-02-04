@@ -1,7 +1,7 @@
 import angryClouds from "../assets/angry_clouds.svg";
 import cloudy from "../assets/cloudy.svg";
 import dayClear from "../assets/day_clear.svg";
-import dayPartialClouds from "../assets/day_partial_cloud.svg";
+import dayPartialCloud from "../assets/day_partial_cloud.svg";
 import dayRainThunder from "../assets/day_rain_thunder.svg";
 import dayRain from "../assets/day_rain.svg";
 import daySleet from "../assets/day_sleet.svg";
@@ -81,6 +81,10 @@ const weatherCodesandIconsNight = {
   771: wind,
   781: tornado,
   800: nightClear,
+  801: nightHalfMoonPartialCloud,
+  802: nightHalfMoonPartialCloud,
+  803: nightHalfMoonPartialCloud,
+  804: overcast,
 };
 
 const weatherCodesandIconsDay = {
@@ -134,15 +138,31 @@ const weatherCodesandIconsDay = {
   771: wind,
   781: tornado,
   800: dayClear,
+  801: dayPartialCloud,
+  802: dayPartialCloud,
+  803: dayPartialCloud,
+  804: overcast,
 };
 
 const returnWeatherIcon = (...args) => {
   console.log('returnWeatherIcon args: ', args);
-  const [weatherCode, sunrise, sunset, time] = args;
+  const [weatherCode, sunrise, sunset, time] = args[0];
+  console.log('returnWeatherIcon. weatherCode is: ', weatherCode, ' sunrise: ', sunrise, ' sunset: ', sunset, ' time: ', time);
   if (isNight(sunrise, sunset, time)) {
-    return weatherCodesandIconsNight[weatherCode];
+    console.log('isNight. weatherCode is: ', weatherCode, ' sunrise: ', sunrise, ' sunset: ', sunset, ' time: ', time);
+    console.log('returnWeatherIcon weatherCodesandIconsNight: ', weatherCodesandIconsNight);
+    const icon = weatherCodesandIconsNight[weatherCode];
+    console.log('returnWeatherIcon icon: ', icon);
+    //return weatherCodesandIconsNight.weatherCode;
+    return icon;
   } else {
-    return weatherCodesandIconsDay[weatherCode];
+    console.log('isDay. weatherCode is: ', weatherCode, ' sunrise: ', sunrise, ' sunset: ', sunset, ' time: ', time);
+    console.log('returnWeatherIcon weatherCodesandIconsDay: ', weatherCodesandIconsDay);
+    console.log('returnWeatherIcon weatherCodesandIconsDay[weatherCode]: ', weatherCodesandIconsDay[weatherCode]);
+    const icon = weatherCodesandIconsDay[weatherCode];
+    console.log('returnWeatherIcon icon: ', icon);
+    return icon
+    //return weatherCodesandIconsDay.weatherCode;
   }
 };
 
