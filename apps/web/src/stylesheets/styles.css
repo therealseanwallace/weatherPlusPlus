@@ -1,0 +1,14 @@
+.hourly-forecast-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  gap: 12px;
+}
+
+.hourly-forecast-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  display: block;
+}
