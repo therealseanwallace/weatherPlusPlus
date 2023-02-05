@@ -145,22 +145,14 @@ const weatherCodesandIconsDay = {
 };
 
 const returnWeatherIcon = (...args) => {
-  console.log('returnWeatherIcon args: ', args);
   const [weatherCode, sunrise, sunset, time] = args[0];
-  console.log('returnWeatherIcon. weatherCode is: ', weatherCode, ' sunrise: ', sunrise, ' sunset: ', sunset, ' time: ', time);
+
   if (isNight(sunrise, sunset, time)) {
-    console.log('isNight. weatherCode is: ', weatherCode, ' sunrise: ', sunrise, ' sunset: ', sunset, ' time: ', time);
-    console.log('returnWeatherIcon weatherCodesandIconsNight: ', weatherCodesandIconsNight);
     const icon = weatherCodesandIconsNight[weatherCode];
-    console.log('returnWeatherIcon icon: ', icon);
     //return weatherCodesandIconsNight.weatherCode;
     return icon;
   } else {
-    console.log('isDay. weatherCode is: ', weatherCode, ' sunrise: ', sunrise, ' sunset: ', sunset, ' time: ', time);
-    console.log('returnWeatherIcon weatherCodesandIconsDay: ', weatherCodesandIconsDay);
-    console.log('returnWeatherIcon weatherCodesandIconsDay[weatherCode]: ', weatherCodesandIconsDay[weatherCode]);
     const icon = weatherCodesandIconsDay[weatherCode];
-    console.log('returnWeatherIcon icon: ', icon);
     return icon
     //return weatherCodesandIconsDay.weatherCode;
   }
