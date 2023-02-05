@@ -8,12 +8,11 @@ const DailyForecastContainer = (props) => {
     <div className={"hourly-forecast-container"}>
       {props.daily.map((forecast) => {
         return (
-          <div key={forecast.dt}>
+          <div key={forecast.dt.dt}>
             <DailyForecast
               forecast={forecast}
-              preferredUnit={props.preferredUnit}
               dt={forecast.dt}
-              timezoneOffset={props.timezoneOffset}
+              preferredUnit={props.preferredUnit}
             />
           </div>
         );
