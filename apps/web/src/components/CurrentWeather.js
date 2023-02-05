@@ -27,6 +27,18 @@ const CurrentWeather = (props) => {
     currentHigh = currentHighConverter.toKelvin().toFixed(0) + "°K";
     currentLow = currentLowConverter.toKelvin().toFixed(0) + "°K";
   }
+
+  let visibility = props.currentWeather.visibility;
+
+  if (visibility >= 10000 && props.preferredUnit === "metric") {
+    visibility = visibility + "+ meters";
+  } else if (visibility >= 10000 && props.preferredUnit === "imperial") {
+    visibility = (visibility * 1.09361) + "+ yards";
+  } else if (visibility < 10000 && props.preferredUnit === "metric") {
+    visibility = visibility + " meters";
+  } else {
+    visibility = (visibility * 1.09361) + " yards";
+  }
   return (
     <div className="current-weather-container">
       <h3>{cityName}</h3>
@@ -35,6 +47,10 @@ const CurrentWeather = (props) => {
       <div>
         <h3>{currentHigh}</h3>
         <h3>{currentLow}</h3>
+      </div>
+      <div className="vis-container">
+        <h3>Visibility:</h3>
+        <h3>{visibility}</h3>
       </div>
     </div>
   )
