@@ -48,6 +48,10 @@ const CurrentWeather = (props) => {
         <h3>{currentHigh}</h3>
         <h3>{currentLow}</h3>
       </div>
+      <div className="uv-container">
+        <h3>UV</h3>
+        <h3>{props.currentWeather.uvi}</h3>
+      </div>
       <div className="vis-container">
         <h3>Visibility:</h3>
         <h3>{visibility}</h3>

@@ -23,7 +23,7 @@ const DailyForecast = (props) => {
       <h3>{props.forecast.weather[0].description}</h3>
       <h3>Max: {convertTemps(props.forecast.temp.max, props.preferredUnit)}</h3>
       <h3>Min: {convertTemps(props.forecast.temp.min, props.preferredUnit)}</h3>
-      <h3>UV Index: {props.forecast.uvi}</h3>
+      <h3>UV: {props.forecast.uvi}</h3>
       <h3>Humidity: {props.forecast.humidity} %</h3>
       
     </div>
