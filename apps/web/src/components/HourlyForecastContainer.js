@@ -2,7 +2,7 @@ import React from "react";
 import HourlyForecast from "./HourlyForecast";
 
 const HourlyForecastContainer = (props) => {
-  console.log("hourly forecast container props are: ", props);
+  //console.log("hourly forecast container props are: ", props);
   return (
     <div className={"hourly-forecast-container"}>
       {props.hourly.map((forecast) => {

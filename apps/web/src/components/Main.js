@@ -3,6 +3,7 @@ import Input from "./Input";
 import getWeather from "../helpers/getWeather";
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecastContainer from "./HourlyForecastContainer";
+import DailyForecastContainer from "./DailyForecastContainer";
 
 const Main = () => {
   let [name, setName] = useState("");
@@ -35,6 +36,7 @@ const Main = () => {
       </div>
     )
   } else {
+
     return (
       <div className="main-container">
         <div className="upper-container">
@@ -62,6 +64,11 @@ const Main = () => {
             sunset = {weather.current.sunset}
             dt={weather.current.dt}
             preferredUnit={preferredUnit}
+          />
+          <DailyForecastContainer 
+            daily = {weather.daily}
+            preferredUnit={preferredUnit}
+            timezoneOffset={weather.timezoneOffset}
           />
         </div>
       </div>
