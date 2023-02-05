@@ -52,6 +52,10 @@ const CurrentWeather = (props) => {
         <h3>Visibility:</h3>
         <h3>{visibility}</h3>
       </div>
+      <div className="humidity-container">
+        <h3>Humidity:</h3>
+        <h3>{props.currentWeather.humidity}%</h3>
+      </div>
     </div>
   )
 }
