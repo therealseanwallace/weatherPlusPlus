@@ -3,18 +3,23 @@
 /* eslint-disable quotes */
 import dotenv from "dotenv";
 import { WeatherModel } from "../resources/schemasModels.js";
+import convertDates from "../helpers/convertDates.js";
+import convertTemps from "../helpers/convertTemps.js";
+import convertDistances from "../helpers/convertDistances.js";
 
 dotenv.config();
 
 const openWeatherKey = process.env.KEY_OPENWEATHER;
 console.log("process.env is: ", process.env);
 
+const userPreferredUnits = "metric";
+
 const getLocation = async (name, country, state) => {
   console.log(
     "getLocation function called. name, country, state are: ",
     name,
     country,
-    state,
+    state
   );
   let result;
   try {
@@ -24,7 +29,7 @@ const getLocation = async (name, country, state) => {
         `https://api.openweathermap.org/geo/1.0/direct?q=${name},${state},${country}&limit=5&appid=${openWeatherKey}`,
         {
           mode: "cors",
-        },
+        }
       );
 
       return result;
@@ -34,12 +39,12 @@ const getLocation = async (name, country, state) => {
       `https://api.openweathermap.org/geo/1.0/direct?q=${name},${country}&limit=5&appid=${openWeatherKey}`,
       {
         mode: "cors",
-      },
+      }
     );
 
     return result;
   } catch (error) {
-    console.log('error getting location: ', error.message);
+    console.log("error getting location: ", error.message);
     return error.message;
   }
 };
@@ -52,7 +57,7 @@ const checkIfDBEntryExistsAndReturnEntry = async (lat, long) => {
     });
     console.log(
       "checkIfDBEntryExistsAndReturnEntry! checkEntry is: ",
-      checkEntry,
+      checkEntry
     );
     if (checkEntry.length > 0) {
       console.log("checkEntry is: ", checkEntry);
@@ -71,7 +76,7 @@ const getWeather = async (lat, long) => {
   let weather;
   try {
     weather = await fetch(
-      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&appid=${openWeatherKey}`,
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&appid=${openWeatherKey}`
     );
     const weatherJSON = await weather.json();
     console.log("weatherJSON is: ", weatherJSON);
@@ -85,7 +90,7 @@ const getPollutionData = async (lat, long) => {
   let pollution;
   try {
     pollution = await fetch(
-      `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${long}&appid=${openWeatherKey}`,
+      `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${long}&appid=${openWeatherKey}`
     );
     const pollutionJSON = await pollution.json();
     return pollutionJSON;
@@ -101,50 +106,187 @@ const processImage = async (image) => {
   return buffer;
 };
 
-const createNewWeatherEntry = async (params) => {
-  console.log("createNewWeatherEntry function called, params is: ", params);
-  const {
-    name, country, state, lat, long, exists
-  } = params;
-  console.log("lat, long are: ", lat, long);
-  const newEntry = new WeatherModel({});
+const composeEntry = async (...args) => {
+  const [lat, long, name] = args;
   const weather = await getWeather(lat, long);
-  // console.log('weather is: ', await weather);
   const pollution = await getPollutionData(lat, long);
-  console.log("pollution is: ", pollution);
-  console.log("pollution.main is: ", pollution.main);
-  console.log("pollution.list is: ", pollution.list);
-
-  // populates the new entry with data from weather and pollution APIs
+  console.log("weather is: ", weather, "pollution is: ", pollution);
+  const newEntry = {};
   newEntry.cityName = name;
   newEntry.latitude = lat;
   newEntry.longitude = long;
   newEntry.timezone = weather.timezone;
   newEntry.timezoneOffset = weather.timezone_offset;
   newEntry.timestamp = Date.now();
-  newEntry.current = weather.current;
-  newEntry.hourly = weather.hourly;
-  newEntry.daily = weather.daily;
-  newEntry.alerts = weather.alerts;
-  newEntry.pollution = pollution;
-  console.log("New entry assembled! newEntry is: ", newEntry);
-  const savedEntry = await newEntry.save();
+  newEntry.current = {
+    clouds: weather.current.clouds,
+    dt: weather.current.dt,
+    feelsLike: weather.current.feels_like,
+    humidity: weather.current.humidity,
+    pressure: weather.current.pressure,
+    sunrise: weather.current.sunrise,
+    sunset: weather.current.sunset,
+    temp: weather.current.temp,
+    min: weather.daily[0].temp.min,
+    max: weather.daily[0].temp.max,
+    uvi: weather.current.uvi,
+    visibility: weather.current.visibility,
+    weather: {
+      description: weather.current.weather[0].description,
+      id: weather.current.weather[0].id,
+    },
+    wind: {
+      deg: weather.current.wind_deg,
+      speed: weather.current.wind_speed,
+    },
+  };
+
+  newEntry.pollution = {
+    aqi: pollution.list[0].main.aqi,
+    co: pollution.list[0].components.co,
+    nh3: pollution.list[0].components.nh3,
+    no: pollution.list[0].components.no,
+    no2: pollution.list[0].components.no2,
+    o3: pollution.list[0].components.o3,
+    so2: pollution.list[0].components.so2,
+    pm2_5: pollution.list[0].components.pm2_5,
+    pm10: pollution.list[0].components.pm10,
+  };
+  newEntry.daily = weather.daily.map((day) => {
+    return {
+      dt: day.dt,
+      sunrise: day.sunrise,
+      sunset: day.sunset,
+      max: day.temp.max,
+      min: day.temp.min,
+      humidity: day.humidity,
+      pressure: day.pressure,
+      uvi: day.uvi,
+      description: day.weather[0].description,
+      id: day.weather[0].id,
+    };
+  });
+  newEntry.hourly = weather.hourly.map((hour) => {
+    console.log('assembling hourly forecast. hour is: ', hour);
+    return {
+      dt: hour.dt,
+      temp: hour.temp,
+      sunrise: newEntry.current.sunrise,
+      sunset: newEntry.current.sunset,
+      id: hour.weather[0].id,
+    };
+  });
+  if (weather.alerts) {
+    newEntry.alerts = weather.alerts;
+  }
+  console.log('newEntry assembled. newEntry is: ', newEntry, 'newEntry.hourly is:', newEntry.hourly);
+  const newEntryModel = new WeatherModel(newEntry);
+  const savedEntry = await newEntryModel.save();
   return savedEntry;
 };
 
-const processPOST = async (name, country, state) => {
-  console.log(
-    "processPOST function called. name, country, state are: ",
-    name,
-    country,
-    state,
+// converts from temperatures in Kelvin to Celsius or Fahrenheit
+const doConversionsOnEntry = async (entry, units) => {
+  const newEntry = entry[0];
+  console.log("doConversionsOnEntry! newEntry is: ", newEntry, typeof newEntry);
+
+  newEntry.current.dt = convertDates(
+    entry[0].current.dt,
+    entry[0].timezoneOffset,
+    units
   );
-  console.log("openWeatherKey is: ", openWeatherKey);
+  newEntry.current.feelsLike = convertTemps(entry[0].current.feelsLike, units);
+  newEntry.current.sunrise = convertDates(
+    entry[0].current.sunrise,
+    newEntry.timezoneOffset,
+    units
+  );
+  newEntry.current.sunset = convertDates(
+    entry[0].current.sunset,
+    newEntry.timezoneOffset,
+    units
+  );
+  newEntry.current.temp = convertTemps(entry[0].current.temp, units);
+  newEntry.current.visibility = convertDistances(
+    entry[0].current.visibility,
+    units
+  );
+  newEntry.current.wind.speed = convertDistances(
+    entry[0].current.wind.speed,
+    units,
+    true
+  );
+  newEntry.current.min = convertTemps(entry[0].current.min, units);
+  newEntry.current.max = convertTemps(entry[0].current.max, units);
+  newEntry.daily = newEntry.daily.map((day) => {
+    day.dt = convertDates(day.dt, newEntry.timezoneOffset, units);
+    day.max = convertTemps(day.max, units);
+    day.min = convertTemps(day.min, units);
+    day.sunrise = convertDates(day.sunrise, newEntry.timezoneOffset, units);
+    day.sunset = convertDates(day.sunset, newEntry.timezoneOffset, units);
+    return day;
+  });
+  newEntry.hourly = newEntry.hourly.map((hour) => {
+    hour.dt = convertDates(hour.dt, newEntry.timezoneOffset, units);
+    hour.sunrise = convertDates(hour.sunrise, newEntry.timezoneOffset, units);
+    hour.sunset = convertDates(hour.sunset, newEntry.timezoneOffset, units);
+    hour.temp = convertTemps(hour.temp, units);
+    return hour;
+  });
+
+  return newEntry;
+};
+
+const composeResponse = async (args) => {
+  console.log("composeResponse function called, args are: ", args);
+  const [name, country, state] = args;
   const location = await getLocation(name, country, state);
-  console.log("location is: ", location);
   const locationJSON = await location.json();
-  console.log('locationJSON is: ', locationJSON);
+  console.log("locationJSON is: ", locationJSON);
+  const lat = locationJSON[0].lat.toFixed(4);
+  const long = locationJSON[0].lon.toFixed(4);
+  const correctedName = locationJSON[0].name;
+  const checkEntry = await checkIfDBEntryExistsAndReturnEntry(lat, long);
+  let newOrUpdatedEntry;
+
+  if (checkEntry) {
+    console.log("DB entry exists. Entry is: ", checkEntry);
+    console.log("checkEntry[0].timestamp is: ", checkEntry[0].timestamp);
+    console.log("Date.now() - 900000 is: ", Date.now() - 900000);
+    if (checkEntry[0].timestamp < Date.now() - 900000) {
+      console.log("Entry is older than 15 minutes. Updating entry.");
+      newOrUpdatedEntry = [await composeEntry(lat, long, correctedName)];
+      console.log("updatedEntryArray is: ", updatedEntryArray);
+    } else {
+      return checkEntry;
+    }
+  }
+  if (!newOrUpdatedEntry) {
+    console.log("DB entry does not exist. Creating new entry.");
+    newOrUpdatedEntry = [await composeEntry(lat, long, correctedName)];
+  }
+  const entryConverted = await doConversionsOnEntry(
+    newOrUpdatedEntry,
+    userPreferredUnits
+  );
+  console.log("entryConverted is: ", entryConverted);
+  return entryConverted;
+};
+
+const processGET = async (...args) => {
+  console.log(
+    "processGET function called, args are: ",
+    args,
+    "typeof args is: ",
+    typeof args
+  );
+  const response = await composeResponse(args);
+  return response;
+
+  /*
   const params = {
+
+    
     name,
     country,
     state,
@@ -171,7 +313,7 @@ const processPOST = async (name, country, state) => {
     if (checkEntry[0].timestamp < Date.now() - 900000) {
       console.log("Entry is older than 15 minutes. Updating entry.");
       params.exists = true;
-      const updatedEntry = await createNewWeatherEntry(params);
+      const updatedEntry = await composeResponse(params);
       const updatedEntryArray = [updatedEntry];
       return updatedEntryArray;
     }
@@ -181,16 +323,7 @@ const processPOST = async (name, country, state) => {
   console.log("DB entry does not exist. Creating new entry.");
   const savedEntryArray = [  await createNewWeatherEntry(params) ];
   console.log("savedEntryArray is: ", savedEntryArray);
-  return savedEntryArray;
-
-  /* const locationReader = location.body.getReader();
-  console.log('locationReader is: ', locationReader);
-  console.log('location is: ', location);
-  console.log('locationReader.read() is: ', locationReader.read());
-  console.log('location.body is', location.body);
-  console.log('typeof location.body is', typeof location.body);
-  const locationJSON = await location.json();
-  console.log('locationJSON is: ', locationJSON); */
+  return savedEntryArray;*/
 };
 
-export default processPOST;
+export default processGET;

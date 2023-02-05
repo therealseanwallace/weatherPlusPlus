@@ -2,12 +2,13 @@ import React from "react";
 import HourlyForecast from "./HourlyForecast";
 
 const HourlyForecastContainer = (props) => {
-  //console.log("hourly forecast container props are: ", props);
+  console.log("hourly forecast container props are: ", props);
   return (
     <div className={"hourly-forecast-container"}>
       {props.hourly.map((forecast) => {
+        console.log('mapping over hourly forecast, forecast.dt is: ', forecast.dt);
         return (
-          <div key={forecast.dt}>
+          <div key={forecast.dt.dt}>
             <HourlyForecast
               forecast={forecast}
               preferredUnit={props.preferredUnit}

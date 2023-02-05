@@ -19,14 +19,15 @@ const Main = () => {
     setWeather(await newWeather);
   }
   useEffect(() => {
-  console.log('main - weather is: ', weather);
-  }, [weather])
+    console.log("main - weather is: ", weather);
+  }, [weather]);
 
   if (!weather) {
     return (
       <div className="main-container">
         <div className="upper-container">
-          <Input submitLocation={submitLocation} 
+          <Input
+            submitLocation={submitLocation}
             setName={setName}
             setCountry={setCountry}
             setRegion={setRegion}
@@ -36,13 +37,13 @@ const Main = () => {
           />
         </div>
       </div>
-    )
+    );
   } else {
-
     return (
       <div className="main-container">
         <div className="upper-container">
-          <Input submitLocation={submitLocation} 
+          <Input
+            submitLocation={submitLocation}
             setName={setName}
             setCountry={setCountry}
             setRegion={setRegion}
@@ -50,38 +51,31 @@ const Main = () => {
             country={country}
             region={region}
           />
-          <CurrentWeather 
+          <CurrentWeather
             location={weather.cityName}
             currentWeather={weather.current}
-            high={weather.daily[0].temp.max}
-            low={weather.daily[0].temp.min}
             preferredUnit={preferredUnit}
-            timezoneOffset={weather.timezoneOffset}
           />
-          <AirQuality 
-            airQuality={weather.pollution.list[0]}
-            timezoneOffset={weather.timezoneOffset}
-          />
+          <AirQuality airQuality={weather.pollution} />
         </div>
         <div className="lower-container">
           <HourlyForecastContainer
-            weather = {weather}
+            weather={weather}
             hourly={weather.hourly}
-            sunrise = {weather.current.sunrise}
-            sunset = {weather.current.sunset}
+            sunrise={weather.current.sunrise}
+            sunset={weather.current.sunset}
             dt={weather.current.dt}
             preferredUnit={preferredUnit}
+
           />
-          <DailyForecastContainer 
-            daily = {weather.daily}
+          <DailyForecastContainer
+            daily={weather.daily}
             preferredUnit={preferredUnit}
-            timezoneOffset={weather.timezoneOffset}
           />
         </div>
       </div>
-    )
+    );
   }
-
 };
 
 export default Main;

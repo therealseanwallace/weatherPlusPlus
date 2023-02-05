@@ -14,9 +14,8 @@ const getWeather = async (name, country, state) => {
         mode: "cors",
       });
       const weatherData = await weather.json();
-      console.log('weatherData is: ', weatherData, 'typeof weatherData is: ', typeof weatherData);
-      console.log('weatherData[0] is: ', weatherData[0]);
-      return weatherData[0];
+      console.log("weatherData is: ", weatherData);
+      return weatherData;
   } catch (error) {
     console.error("Error getting weather: ", error.message);
   }
