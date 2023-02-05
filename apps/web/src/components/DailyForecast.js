@@ -4,7 +4,7 @@ import convertTemps from "../helpers/convertTemps";
 import getDayAndTime from "../helpers/getDayAndTime";
 
 const DailyForecast = (props) => {
-  console.log('daily forecast props are: ', props);
+  //console.log('daily forecast props are: ', props);
   const dayAndTime = getDayAndTime(props.dt, props.timezoneOffset);
   const { day } = dayAndTime;
   return (
