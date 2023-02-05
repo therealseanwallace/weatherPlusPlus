@@ -4,6 +4,7 @@ import getWeather from "../helpers/getWeather";
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecastContainer from "./HourlyForecastContainer";
 import DailyForecastContainer from "./DailyForecastContainer";
+import AirQuality from "./AirQuality";
 
 const Main = () => {
   let [name, setName] = useState("");
@@ -17,8 +18,9 @@ const Main = () => {
     const newWeather = await getWeather(name, country, region);
     setWeather(await newWeather);
   }
-  
-
+  useEffect(() => {
+  console.log('main - weather is: ', weather);
+  }, [weather])
 
   if (!weather) {
     return (
@@ -54,6 +56,10 @@ const Main = () => {
             high={weather.daily[0].temp.max}
             low={weather.daily[0].temp.min}
             preferredUnit={preferredUnit}
+          />
+          <AirQuality 
+            airQuality={weather.pollution.list[0]}
+            timezoneOffset={weather.timezoneOffset}
           />
         </div>
         <div className="lower-container">
