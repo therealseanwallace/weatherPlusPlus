@@ -1,4 +1,5 @@
 import React from "react";
+import getDayAndTime from "../helpers/getDayAndTime";
 
 // converts between Kelvin, Celsius, and Fahrenheit - 
 // see https://www.npmjs.com/package/node-temperature-converter for details
@@ -59,6 +60,12 @@ const CurrentWeather = (props) => {
       <div className="humidity-container">
         <h3>Humidity:</h3>
         <h3>{props.currentWeather.humidity}%</h3>
+      </div>
+      <div className="sunriseSunset-container">
+        <h3>Sunrise:</h3>
+        <h3>{getDayAndTime(props.currentWeather.sunrise, props.timezoneOffset).time}</h3>
+        <h3>Sunset:</h3>
+        <h3>{getDayAndTime(props.currentWeather.sunset, props.timezoneOffset).time}</h3>
       </div>
     </div>
   )

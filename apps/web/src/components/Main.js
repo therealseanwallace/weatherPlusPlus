@@ -56,6 +56,7 @@ const Main = () => {
             high={weather.daily[0].temp.max}
             low={weather.daily[0].temp.min}
             preferredUnit={preferredUnit}
+            timezoneOffset={weather.timezoneOffset}
           />
           <AirQuality 
             airQuality={weather.pollution.list[0]}
