@@ -11,6 +11,7 @@ const WeatherSchema = new Schema({
   cityName: String,
   latitude: Number,
   longitude: Number,
+  current: Object,
   timezone: String,
   timezoneOffset: Number,
   timestamp: Number,
@@ -19,7 +20,6 @@ const WeatherSchema = new Schema({
   daily: Object,
   alerts: Object,
   pollution: Object,
-  alerts: Object,
 });
 
 export const WeatherModel = mongoose.model("Weather", WeatherSchema);
