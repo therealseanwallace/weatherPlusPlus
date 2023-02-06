@@ -6,6 +6,7 @@ import { WeatherModel } from "../resources/schemasModels.js";
 import convertDates from "../helpers/convertDates.js";
 import convertTemps from "../helpers/convertTemps.js";
 import convertDistances from "../helpers/convertDistances.js";
+import getBackground from "../helpers/getBackground.js";
 
 dotenv.config();
 
@@ -112,6 +113,7 @@ const composeEntry = async (...args) => {
   const pollution = await getPollutionData(lat, long);
   console.log("weather is: ", weather, "pollution is: ", pollution);
   const newEntry = {};
+  const background = getBackground(weather.current.weather[0].id);
   newEntry.cityName = name;
   newEntry.latitude = lat;
   newEntry.longitude = long;
@@ -139,6 +141,7 @@ const composeEntry = async (...args) => {
       deg: weather.current.wind_deg,
       speed: weather.current.wind_speed,
     },
+    background: background,
   };
 
   newEntry.pollution = {
@@ -176,6 +179,7 @@ const composeEntry = async (...args) => {
       id: hour.weather[0].id,
     };
   });
+  
   if (weather.alerts) {
     newEntry.alerts = weather.alerts;
   }
