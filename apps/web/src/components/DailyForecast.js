@@ -1,6 +1,5 @@
 import React from "react";
 import returnWeatherIcon from "../helpers/returnWeatherIcon";
-import getDayAndTime from "../helpers/getDayAndTime";
 
 const DailyForecast = (props) => {
   console.log('daily forecast props are: ', props);

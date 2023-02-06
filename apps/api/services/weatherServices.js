@@ -7,6 +7,7 @@ import convertDates from "../helpers/convertDates.js";
 import convertTemps from "../helpers/convertTemps.js";
 import convertDistances from "../helpers/convertDistances.js";
 import getBackground from "../helpers/getBackground.js";
+import getWindDirection from "../helpers/getWindDirection.js";
 
 dotenv.config();
 
@@ -120,6 +121,7 @@ const composeEntry = async (...args) => {
   newEntry.timezone = weather.timezone;
   newEntry.timezoneOffset = weather.timezone_offset;
   newEntry.timestamp = Date.now();
+  const windDir = getWindDirection(weather.current.wind_deg);
   newEntry.current = {
     clouds: weather.current.clouds,
     dt: weather.current.dt,
@@ -138,7 +140,7 @@ const composeEntry = async (...args) => {
       id: weather.current.weather[0].id,
     },
     wind: {
-      deg: weather.current.wind_deg,
+      dir: windDir,
       speed: weather.current.wind_speed,
     },
     background: background,
