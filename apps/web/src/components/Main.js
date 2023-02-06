@@ -40,7 +40,9 @@ const Main = () => {
     );
   } else {
     return (
-      <div className="main-container">
+      <div className="main-container"
+        style={{backgroundImage: `url(${weather.current.background}`}}
+      >
         <div className="upper-container">
           <Input
             submitLocation={submitLocation}
