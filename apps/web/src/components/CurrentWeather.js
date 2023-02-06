@@ -12,6 +12,7 @@ const CurrentWeather = (props) => {
   let vis;
   let sunrise;
   let sunset;
+  let windspeed
 
   if (props.preferredUnit === "metric") {
     temp = props.currentWeather.temp.metric;
@@ -20,6 +21,7 @@ const CurrentWeather = (props) => {
     vis = props.currentWeather.visibility.metric;
     sunrise = props.currentWeather.sunrise.time24;
     sunset = props.currentWeather.sunset.time24;
+    windspeed = props.currentWeather.wind.speed.metric;
   }
   return (
     <div className="current-weather-container">
@@ -47,6 +49,11 @@ const CurrentWeather = (props) => {
         <h3>{sunrise}</h3>
         <h3>Sunset:</h3>
         <h3>{sunset}</h3>
+      </div>
+      <div className="wind-container">
+        <h3>Windspeed: {windspeed}</h3>
+        <h3>Wind Direction: {props.currentWeather.wind.dir}</h3>
+
       </div>
     </div>
   )
