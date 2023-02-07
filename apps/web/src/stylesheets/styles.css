@@ -1,3 +1,63 @@
+/* RESET STYLES */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+* {
+  font-family: "Roboto", serif;
+}
+
+/* IMPORT FONTS */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
+
+/* STYLES */
+
+* {
+  color: #cdd7d6;
+}
+
 .hourly-forecast-container {
   display: flex;
   flex-direction: row;
@@ -9,6 +69,124 @@
 .hourly-forecast-icon {
   width: 50px;
   height: 50px;
+  margin: 0 auto;
+  display: block;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 5% 0 5%;
+  background-color: #1c2541a8;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.input-container > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.input-container > form > * {
+  width: 100%;
+  color: #0b132b;
+  font-weight: bold;
+}
+
+.current-weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 5% 0 5%;
+  background-color: #1c2541a8;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.current-weather-name {
+  font-size: 2rem;
+}
+
+.current-weather-temp {
+  font-size: 3rem;
+}
+
+.current-weather-desc {
+  font-size: 1.5rem;
+}
+
+.current-weather-high-low, .current-weather-uv, .current-weather-sunrise-sunset {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.current-weather-vis-humidity {
+  display: flex;
+  flex-direction: column;
+}
+
+.air-quality {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 5% 0 5%;
+  background-color: #1c2541a8;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.future-forecast-outer-container {
+  background-color: #1c2541a8;
+  margin: 20px 5% 0 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.future-forecast-outer-container > h2 {
+  text-align: center;
+}
+
+.future-forecast-inner-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 5% 0 5%;
+}
+
+.hourly-forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.daily-forecast {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.daily-forecast-icon {
+  width: 100px;
+  height: 100px;
   margin: 0 auto;
   display: block;
 }

@@ -4,7 +4,6 @@ import getWeather from "../helpers/getWeather";
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecastContainer from "./HourlyForecastContainer";
 import DailyForecastContainer from "./DailyForecastContainer";
-import AirQuality from "./AirQuality";
 
 const Main = () => {
   let [name, setName] = useState("");
@@ -57,8 +56,8 @@ const Main = () => {
             location={weather.cityName}
             currentWeather={weather.current}
             preferredUnit={preferredUnit}
+            airQuality={weather.pollution}
           />
-          <AirQuality airQuality={weather.pollution} />
         </div>
         <div className="lower-container">
           <HourlyForecastContainer
