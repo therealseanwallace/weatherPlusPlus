@@ -34,12 +34,12 @@ const DailyForecast = (props) => {
         className="daily-forecast-icon"
       />
       <h3>{props.forecast.description}</h3>
-      <h3>Max: {max}</h3>
-      <h3>Min: {min}</h3>
-      <h3>UVI: {props.forecast.uvi}</h3>
-      <h3>Humidity: {props.forecast.humidity} %</h3>
-      <h3>Sunrise: {sunrise}</h3>
-      <h3>Sunset: {sunset}</h3>
+      <h3>⬆️ {max}</h3>
+      <h3>⬇️ {min}</h3>
+      <h3>UV: {props.forecast.uvi}</h3>
+      <h3>🌅 {sunrise}</h3>
+      <h3>🌇 {sunset}</h3>
+      <h3>Humidity: {props.forecast.humidity}%</h3>
       
     </div>
   )

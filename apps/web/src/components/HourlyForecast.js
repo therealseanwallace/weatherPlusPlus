@@ -14,7 +14,8 @@ const HourlyForecast = (props) => {
   }
   return (
     <div className="hourly-forecast">
-      <h3>{`${props.dt.day}, ${time}`}</h3>
+      <h3>{props.dt.day}</h3>
+      <h3>{time}</h3>
       <img
         src={returnWeatherIcon([
           props.forecast.id,
