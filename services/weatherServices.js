@@ -249,6 +249,9 @@ const composeResponse = async (args) => {
   const location = await getLocation(name, country, state);
   const locationJSON = await location.json();
   console.log("locationJSON is: ", locationJSON);
+  if (locationJSON.length === 0) {
+    return 404;
+  }
   const lat = locationJSON[0].lat.toFixed(4);
   const long = locationJSON[0].lon.toFixed(4);
   const correctedName = locationJSON[0].name;
