@@ -15,7 +15,9 @@ const Main = () => {
   async function submitLocation(e) {
     e.preventDefault();
     const newWeather = await getWeather(name, country, region);
+    console.log('weather retrieved by main. newWeather is: ', newWeather);
     setWeather(await newWeather);
+    
   }
   useEffect(() => {
     console.log("main - weather is: ", weather);
@@ -37,7 +39,13 @@ const Main = () => {
         </div>
       </div>
     );
-  } else if (weather === 429) {
+  } else if (weather === 429 || weather === 404) {
+    let errorMessage;
+    if (weather === 429) {
+      errorMessage = "Too many requests from this IP, please try again shortly.";
+    } else if (weather === 404) {
+      errorMessage = "Location not found, please try again. Please ensure that you typed the city name correctly and that you selected the correct country.";
+    }
     return (
       <div className="main-container">
         <div className="upper-container">
@@ -52,7 +60,7 @@ const Main = () => {
           />
         </div>
         <div className="error-container">
-          <h1>Too many requests from this IP, please try again shortly.</h1>
+          <h1>{errorMessage}</h1>
         </div>
       </div>
     );

@@ -27,11 +27,15 @@ const getWeather = async (name, country, state) => {
     if (weather.status === 429) {
       console.log("Error getting weather: 429");
       return 429;
+    } else if (weather.status === 404) {
+      console.log("Error getting weather: 404");
+      return 404;
     } else {
       const weatherData = await weather.json();
       console.log("weatherData is: ", weatherData);
       return weatherData;
     }
+    
   } catch (error) {
     console.error("Error getting weather: ", error.message);
   }
