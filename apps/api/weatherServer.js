@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
 import weatherRouter from './routes/weatherRouter.js';
-import path from 'path';
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 
@@ -27,9 +27,13 @@ const whitelist = ['http://localhost:3000'];
 
 app.use('/public', express.static('public'));
 
+const apiRequestLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 10, // limit each IP to 10 requests per minute
+  message: 'Too many requests from this IP, please try again shortly.',
+});
 
-
-
+app.use('/api', apiRequestLimiter);
 
 app.get('/ping', (_req, res) => {
   console.log(`someone pinged here!!${new Date()}`);
