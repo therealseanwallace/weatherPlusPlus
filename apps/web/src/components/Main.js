@@ -4,6 +4,7 @@ import getWeather from "../helpers/getWeather";
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecastContainer from "./HourlyForecastContainer";
 import DailyForecastContainer from "./DailyForecastContainer";
+import { useRef } from "react";
 
 const Main = () => {
   let [name, setName] = useState("");
@@ -11,6 +12,7 @@ const Main = () => {
   let [region, setRegion] = useState("");
   let [weather, setWeather] = useState(false);
   let [preferredUnit, setPreferredUnit] = useState("metric");
+  const isInitialMount = useRef(true);
 
   async function submitLocation(e) {
     e.preventDefault();
@@ -19,9 +21,29 @@ const Main = () => {
     setWeather(await newWeather);
     
   }
+
+  const showStateifUS = () => {
+    const country = document.querySelector(".crs-country");
+    if (country.value === "US") {
+      document.querySelector(".crs-state").classList.toggle("hidden");
+    }
+    if (country.value !== "US") {
+      document.querySelector(".crs-state").classList.toggle("hidden");
+    }
+    document.querySelector(".crs-state-spacer").classList.toggle("hidden");
+  };
+
   useEffect(() => {
-    console.log("main - weather is: ", weather);
+    console.log("main - weather is: ", weather);  
   }, [weather]);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+       isInitialMount.current = false;
+    } else {
+      showStateifUS();
+    }
+  }, [country]);
 
   if (!weather) {
     return (
