@@ -37,6 +37,25 @@ const Main = () => {
         </div>
       </div>
     );
+  } else if (weather === 429) {
+    return (
+      <div className="main-container">
+        <div className="upper-container">
+          <Input
+            submitLocation={submitLocation}
+            setName={setName}
+            setCountry={setCountry}
+            setRegion={setRegion}
+            name={name}
+            country={country}
+            region={region}
+          />
+        </div>
+        <div className="error-container">
+          <h1>Too many requests from this IP, please try again shortly.</h1>
+        </div>
+      </div>
+    );
   } else {
     return (
       <div className="main-container"
