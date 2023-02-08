@@ -16,13 +16,16 @@ const Input = (props) => {
           value={props.country}
           onChange={(val) => props.setCountry(val)}
           name="country"
+          classes="crs-country"
         />
         <RegionDropdown
           country={props.country}
           value={props.region}
           onChange={(val) => props.setRegion(val)}
           name="region"
+          classes="crs-state hidden"
         />
+        <div className="crs-state-spacer"/>
         <button onClick={props.submitLocation} type="submit">
           Submit
         </button>

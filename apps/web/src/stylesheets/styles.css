@@ -101,6 +101,14 @@ h6 {
   font-weight: bold;
 }
 
+.hidden {
+  display: none;
+}
+
+.crs-state-spacer {
+  height: 23px;
+}
+
 .current-weather-container {
   display: flex;
   flex-direction: column;

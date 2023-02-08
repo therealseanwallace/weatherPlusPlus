@@ -246,7 +246,13 @@ const doConversionsOnEntry = async (entry, units) => {
 const composeResponse = async (args) => {
   console.log("composeResponse function called, args are: ", args);
   const [name, country, state] = args;
-  const location = await getLocation(name, country, state);
+  let location;
+  if (country !== "United States") {
+    location = await getLocation(name, country);
+  } else {
+    location = await getLocation(name, country, state);
+  }
+  
   const locationJSON = await location.json();
   console.log("locationJSON is: ", locationJSON);
   if (locationJSON.length === 0) {
