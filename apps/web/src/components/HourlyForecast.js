@@ -1,5 +1,4 @@
 import React from "react";
-import returnWeatherIcon from "../helpers/returnWeatherIcon";
 
 const HourlyForecast = (props) => {
   console.log("hourly forecast props are: ", props);

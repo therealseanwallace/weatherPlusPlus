@@ -1,5 +1,4 @@
 import React from "react";
-import returnWeatherIcon from "../helpers/returnWeatherIcon";
 
 const DailyForecast = (props) => {
   console.log('daily forecast props are: ', props);
@@ -35,7 +34,6 @@ const DailyForecast = (props) => {
       <h3>🌅 {sunrise}</h3>
       <h3>🌇 {sunset}</h3>
       <h3>Humidity: {props.forecast.humidity}%</h3>
-      
     </div>
   )
 }
