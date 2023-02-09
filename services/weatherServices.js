@@ -6,8 +6,9 @@ import { WeatherModel } from "../resources/schemasModels.js";
 import convertDates from "../helpers/convertDates.js";
 import convertTemps from "../helpers/convertTemps.js";
 import convertDistances from "../helpers/convertDistances.js";
-import getBackground from "../helpers/getBackground.js";
+import getBackgroundAndIcon from "../helpers/getBackgroundAndIcon.js";
 import getWindDirection from "../helpers/getWindDirection.js";
+import isNight from "../helpers/isNight.js";
 
 dotenv.config();
 
@@ -114,7 +115,7 @@ const composeEntry = async (...args) => {
   const pollution = await getPollutionData(lat, long);
   console.log("weather is: ", weather, "pollution is: ", pollution);
   const newEntry = {};
-  const background = getBackground(weather.current.weather[0].id);
+  const backgroundAndIcon = getBackgroundAndIcon(weather.current.weather[0].id, isNight());
   newEntry.cityName = name;
   newEntry.latitude = lat;
   newEntry.longitude = long;
@@ -143,7 +144,7 @@ const composeEntry = async (...args) => {
       dir: windDir,
       speed: weather.current.wind_speed,
     },
-    background: background,
+    backgroundAndIcon: backgroundAndIcon,
   };
 
   newEntry.pollution = {
@@ -158,6 +159,7 @@ const composeEntry = async (...args) => {
     pm10: pollution.list[0].components.pm10,
   };
   newEntry.daily = weather.daily.map((day) => {
+    const backgroundAndIcon = getBackgroundAndIcon(day.weather[0].id, isNight(day.sunrise, day.sunset));
     return {
       dt: day.dt,
       sunrise: day.sunrise,
@@ -169,16 +171,19 @@ const composeEntry = async (...args) => {
       uvi: day.uvi,
       description: day.weather[0].description,
       id: day.weather[0].id,
+      icon: backgroundAndIcon.iconImage,
     };
   });
   newEntry.hourly = weather.hourly.map((hour) => {
     console.log('assembling hourly forecast. hour is: ', hour);
+    const backgroundAndIcon = getBackgroundAndIcon(hour.weather[0].id, isNight(hour.sunrise, hour.sunset));
     return {
       dt: hour.dt,
       temp: hour.temp,
       sunrise: newEntry.current.sunrise,
       sunset: newEntry.current.sunset,
       id: hour.weather[0].id,
+      icon: backgroundAndIcon.iconImage,
     };
   });
   
