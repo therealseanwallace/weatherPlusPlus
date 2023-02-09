@@ -1,11 +1,9 @@
 import angryClouds from "../assets/angry_clouds.svg";
-import cloudy from "../assets/cloudy.svg";
 import dayClear from "../assets/day_clear.svg";
 import dayPartialCloud from "../assets/day_partial_cloud.svg";
 import dayRainThunder from "../assets/day_rain_thunder.svg";
 import dayRain from "../assets/day_rain.svg";
 import daySleet from "../assets/day_sleet.svg";
-import daySnowThunder from "../assets/day_snow_thunder.svg";
 import daySnow from "../assets/day_snow.svg";
 import fog from "../assets/fog.svg";
 import mist from "../assets/mist.svg";
@@ -14,15 +12,8 @@ import nightHalfMoonPartialCloud from "../assets/night_half_moon_partial_cloud.s
 import nightHalfMoonRainThunder from "../assets/night_half_moon_rain_thunder.svg";
 import nightHalfMoonRain from "../assets/night_half_moon_rain.svg";
 import nightHalfMoonSleet from "../assets/night_half_moon_sleet.svg";
-import nightHalfMoonSnowThunder from "../assets/night_half_moon_snow_thunder.svg";
 import nightHalfMoonSnow from "../assets/night_half_moon_snow.svg";
 import overcast from "../assets/overcast.svg";
-import rainThunder from "../assets/rain_thunder.svg";
-import rain from "../assets/rain.svg";
-import sleet from "../assets/sleet.svg";
-import snowThunder from "../assets/snow_thunder.svg";
-import snow from "../assets/snow.svg";
-import thunder from "../assets/thunder.svg";
 import tornado from "../assets/tornado.svg";
 import wind from "../assets/wind.svg";
 

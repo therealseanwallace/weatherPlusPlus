@@ -89,7 +89,7 @@ const Main = () => {
   } else {
     return (
       <div className="main-container"
-        style={{backgroundImage: `url(${weather.current.background}`}}
+        style={{backgroundImage: `url(${weather.current.backgroundAndIcon.backgroundImage}`}}
       >
         <div className="upper-container">
           <Input

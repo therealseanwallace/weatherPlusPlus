@@ -1,0 +1,316 @@
+{
+  "codes": {
+    "200": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "201": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "202": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "210": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "211": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "212": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "221": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "230": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "231": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "232": {
+      "background": "thunder",
+      "iconDay": "dayRainThunder",
+      "iconNight": "nightHalfMoonRainThunder"
+    },
+    "300": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "301": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "302": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "310": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "311": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "312": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "313": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "314": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "321": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "500": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "501": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "502": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "503": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "504": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "511": {
+      "background": "rain",
+      "iconDay": "dayRain",
+      "iconNight": "nightHalfMoonRain"
+    },
+    "520": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "521": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "522": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "531": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "600": {
+      "background": "snow",
+      "iconDay": "daySnow",
+      "iconNight": "nightHalfMoonSnow"
+    },
+    "601": {
+      "background": "snow",
+      "iconDay": "daySnow",
+      "iconNight": "nightHalfMoonSnow"
+    },
+    "602": {
+      "background": "snow",
+      "iconDay": "daySnow",
+      "iconNight": "nightHalfMoonSnow"
+    },
+    "611": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "612": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "613": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "615": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "616": {
+      "background": "rain",
+      "iconDay": "daySleet",
+      "iconNight": "nightHalfMoonSleet"
+    },
+    "620": {
+      "background": "snow",
+      "iconDay": "daySnow",
+      "iconNight": "nightHalfMoonSnow"
+    },
+    "621": {
+      "background": "snow",
+      "iconDay": "daySnow",
+      "iconNight": "nightHalfMoonSnow"
+    },
+    "622": {
+      "background": "snow",
+      "iconDay": "daySnow",
+      "iconNight": "nightHalfMoonSnow"
+    },
+    "701": {
+      "background": "fog",
+      "iconDay": "mist",
+      "iconNight": "mist"
+    },
+    "711": {
+      "background": "smoke",
+      "iconDay": "angryClouds",
+      "iconNight": "angryClouds"
+    },
+    "721": {
+      "background": "haze",
+      "iconDay": "fog",
+      "iconNight": "fog"
+    },
+    "731": {
+      "background": "dust",
+      "iconDay": "angryClouds",
+      "iconNight": "angryClouds"
+    },
+    "741": {
+      "background": "fog",
+      "iconDay": "fog",
+      "iconNight": "fog"
+    },
+    "751": {
+      "background": "dust",
+      "iconDay": "angryClouds",
+      "iconNight": "angryClouds"
+    },
+    "761": {
+      "background": "dust",
+      "iconDay": "angryClouds",
+      "iconNight": "angryClouds"
+    },
+    "762": {
+      "background": "ash",
+      "iconDay": "angryClouds",
+      "iconNight": "angryClouds"
+    },
+    "771": {
+      "background": "squall",
+      "iconDay": "wind",
+      "iconNight": "wind"
+    },
+    "781": {
+      "background": "tornado",
+      "iconDay": "tornado",
+      "iconNight": "tornado"
+    },
+    "800": {
+      "background": "clear",
+      "iconDay": "dayClear",
+      "iconNight": "nightClear"
+    },
+    "801": {
+      "background": "clouds",
+      "iconDay": "dayPartialCloud",
+      "iconNight": "nightHalfMoonPartialCloud"
+    },
+    "802": {
+      "background": "clouds",
+      "iconDay": "dayPartialCloud",
+      "iconNight": "nightHalfMoonPartialCloud"
+    },
+    "803": {
+      "background": "clouds",
+      "iconDay": "dayPartialCloud",
+      "iconNight": "nightHalfMoonPartialCloud"
+    },
+    "804": {
+      "background": "overcast",
+      "iconDay": "overcast",
+      "iconNight": "overcast"
+    }
+  },
+  "links": {
+    "backgrounds": {
+      "thunder": "http://localhost:3001/public/images/thunder.webp",
+      "rain": "http://localhost:3001/public/images/rain.webp",
+      "snow": "http://localhost:3001/public/images/snow.webp",
+      "fog": "http://localhost:3001/public/images/fog.webp",
+      "smoke": "http://localhost:3001/public/images/smoke.webp",
+      "haze": "http://localhost:3001/public/images/haze.webp",
+      "dust": "http://localhost:3001/public/images/dustSand.webp",
+      "ash": "http://localhost:3001/public/images/ash.webp",
+      "wind": "http://localhost:3001/public/images/wind.webp",
+      "tornado": "http://localhost:3001/public/images/tornado.webp",
+      "clear": "http://localhost:3001/public/images/clear.webp",
+      "clouds": "http://localhost:3001/public/images/clouds.webp",
+      "overcast": "http://localhost:3001/public/images/overcast.webp"
+    },
+    "icons": {
+      "dayRainThunder": "http://localhost:3001/public/images/day_rain_thunder.svg",
+      "nightHalfMoonRainThunder": "http://localhost:3001/public/images/night_half_moon_rain_thunder.svg",
+      "dayRain": "http://localhost:3001/public/images/day_rain.svg",
+      "nightHalfMoonRain": "http://localhost:3001/public/images/night_half_moon_rain.svg",
+      "daySleet": "http://localhost:3001/public/images/day_sleet.svg",
+      "nightHalfMoonSleet": "http://localhost:3001/public/images/night_half_moon_sleet.svg",
+      "daySnow": "http://localhost:3001/public/images/day_snow.svg",
+      "nightHalfMoonSnow": "http://localhost:3001/public/images/night_half_moon_snow.svg",
+      "fog": "http://localhost:3001/public/images/fog.svg",
+      "mist": "http://localhost:3001/public/images/mist.svg",
+      "wind": "http://localhost:3001/public/images/wind.svg",
+      "tornado": "http://localhost:3001/public/images/tornado.svg",
+      "dayClear": "http://localhost:3001/public/images/day_clear.svg",
+      "nightClear": "http://localhost:3001/public/images/night_clear.svg",
+      "dayPartialCloud": "http://localhost:3001/public/images/day_partial_cloud.svg",
+      "nightHalfMoonPartialCloud": "http://localhost:3001/public/images/night_half_moon_partial_cloud.svg",
+      "overcast": "http://localhost:3001/public/images/overcast.svg",
+      "angryClouds": "http://localhost:3001/public/images/angry_clouds.svg"
+    }
+  }
+}

@@ -24,12 +24,7 @@ const DailyForecast = (props) => {
     <div className="daily-forecast">
       <h3>{props.forecast.dt.day}</h3>
       <img
-        src={returnWeatherIcon([
-          props.forecast.id,
-          props.forecast.sunrise.dt,
-          props.forecast.sunset.dt,
-          props.dt.dt,
-        ])}
+        src={props.icon}
         alt=""
         className="daily-forecast-icon"
       />

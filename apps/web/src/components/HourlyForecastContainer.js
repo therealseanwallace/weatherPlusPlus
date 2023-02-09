@@ -22,6 +22,7 @@ const HourlyForecastContainer = (props) => {
                 dt={forecast.dt}
                 timezone={props.weather.timezone}
                 timezoneOffset={props.weather.timezoneOffset}
+                icon={forecast.icon}
               />
             </div>
           );
