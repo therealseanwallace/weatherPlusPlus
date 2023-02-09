@@ -15,6 +15,7 @@ const DailyForecastContainer = (props) => {
                 forecast={forecast}
                 dt={forecast.dt}
                 preferredUnit={props.preferredUnit}
+                icon = {forecast.icon}
               />
             </div>
           );
