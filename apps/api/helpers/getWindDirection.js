@@ -1,5 +1,4 @@
 const convertWind = (deg) => {
-  // Takes wind direction as degrees and returns a human-readable string
   let direction;
   switch (true) {
     case deg >= 337.5 || deg < 22.5:
