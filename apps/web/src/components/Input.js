@@ -27,6 +27,7 @@ const Input = (props) => {
           name="region"
           classes="crs-state"
           countryValueType="short"
+          defaultOptionLabel="Select state (optional)"
         />
         <div className="state-spacer hidden"/>
         <button onClick={props.submitLocation} type="submit">
