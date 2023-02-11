@@ -25,13 +25,14 @@ function Main() {
 
   const showStateifUS = () => {
     const country = document.querySelector(".crs-country");
-    if (country.value === "US") {
-      document.querySelector(".crs-state").classList.toggle("hidden");
+    if (country.value === "United States") {
+      document.querySelector(".crs-state").classList.remove("hidden");
+      document.querySelector(".state-spacer").classList.add("hidden");
+    } else {
+      document.querySelector(".crs-state").classList.add("hidden");
+      document.querySelector(".state-spacer").classList.remove("hidden");
     }
-    if (country.value !== "US") {
-      document.querySelector(".crs-state").classList.toggle("hidden");
-    }
-    document.querySelector(".state-spacer").classList.toggle("hidden");
+    
   };
 
   const toggleUnits = () => {
