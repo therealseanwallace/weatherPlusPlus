@@ -35,10 +35,6 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-app.use((_req, res) => {
-  res.status(404).send("Sorry can't find that!")
-})
-
 // Mongoose //
 
 const MONGO_URL = process.env.MONGO_URL;
