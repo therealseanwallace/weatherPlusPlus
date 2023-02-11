@@ -1,5 +1,4 @@
 import React from "react";
-import AirQuality from "./AirQuality";
 
 // converts between Kelvin, Celsius, and Fahrenheit -
 // see https://www.npmjs.com/package/node-temperature-converter for details
@@ -22,11 +21,26 @@ const CurrentWeather = (props) => {
     sunrise = props.currentWeather.sunrise.time24;
     sunset = props.currentWeather.sunset.time24;
     windspeed = props.currentWeather.wind.speed.metric;
+  } else {
+    temp = props.currentWeather.temp.imperial;
+    max = props.currentWeather.max.imperial;
+    min = props.currentWeather.min.imperial;
+    sunrise = props.currentWeather.sunrise.time12;
+    sunset = props.currentWeather.sunset.time12;
+    windspeed = props.currentWeather.wind.speed.imperial;
   }
 
   return (
     <div className="current-weather-container">
       <h3 className="current-weather-name">{cityName}</h3>
+      <div className="toggle-container">
+        <p>Units: </p>
+        <label class="switch">
+          <input type="checkbox" onClick={props.toggleUnits} />
+          <span class="slider" />
+        </label>
+      </div>
+
       <h2 className="current-weather-temp">{temp}</h2>
       <h3 className="current-weather-desc">
         {props.currentWeather.weather.description}
@@ -42,7 +56,9 @@ const CurrentWeather = (props) => {
         <h3>{sunset}</h3>
       </div>
       <div className="wind-container">
-        <h3>🌬️ {windspeed} {props.currentWeather.wind.dir} </h3>
+        <h3>
+          🌬️ {windspeed} {props.currentWeather.wind.dir}{" "}
+        </h3>
       </div>
       <div className="current-weather-uv">
         <h3>UV:</h3>
@@ -53,9 +69,6 @@ const CurrentWeather = (props) => {
           <h3>Humidity: {props.currentWeather.humidity}%</h3>
         </div>
       </div>
-      <AirQuality 
-        airQuality={props.airQuality}
-      />
     </div>
   );
 };
