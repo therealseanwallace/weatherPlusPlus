@@ -11,6 +11,7 @@ const Input = (props) => {
           placeholder="Enter a town or city"
           onChange={(e) => props.setName(e.target.value)}
           name="name"
+          className="city-input"
         />
         <CountryDropdown
           value={props.country}
@@ -25,7 +26,7 @@ const Input = (props) => {
           name="region"
           classes="crs-state hidden"
         />
-        <div className="crs-state-spacer"/>
+        <div className="state-spacer"/>
         <button onClick={props.submitLocation} type="submit">
           Submit
         </button>

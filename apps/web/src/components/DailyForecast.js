@@ -20,7 +20,7 @@ const DailyForecast = (props) => {
     sunset = props.forecast.sunset.time12;
   }
   return (
-    <div className="daily-forecast">
+    <div className="daily-forecast future-forecast">
       <h3>{props.forecast.dt.day}</h3>
       <img
         src={props.icon}

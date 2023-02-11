@@ -12,7 +12,7 @@ const HourlyForecast = (props) => {
     temp = props.forecast.temp.imperial;
   }
   return (
-    <div className="hourly-forecast">
+    <div className="hourly-forecast future-forecast">
       <h3>{props.dt.day}</h3>
       <h3>{time}</h3>
       <img
