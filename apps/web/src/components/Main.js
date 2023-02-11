@@ -31,7 +31,7 @@ function Main() {
     if (country.value !== "US") {
       document.querySelector(".crs-state").classList.toggle("hidden");
     }
-    document.querySelector(".crs-state-spacer").classList.toggle("hidden");
+    document.querySelector(".state-spacer").classList.toggle("hidden");
   };
 
   const toggleUnits = () => {
