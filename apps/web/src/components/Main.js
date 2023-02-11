@@ -5,8 +5,9 @@ import CurrentWeather from "./CurrentWeather";
 import HourlyForecastContainer from "./HourlyForecastContainer";
 import DailyForecastContainer from "./DailyForecastContainer";
 import { useRef } from "react";
+import AirQuality from "./AirQuality";
 
-const Main = () => {
+function Main() {
   let [name, setName] = useState("");
   let [country, setCountry] = useState("");
   let [region, setRegion] = useState("");
@@ -32,6 +33,14 @@ const Main = () => {
     }
     document.querySelector(".crs-state-spacer").classList.toggle("hidden");
   };
+
+  const toggleUnits = () => {
+    if (preferredUnit === "metric") {
+      setPreferredUnit("imperial");
+    } else if (preferredUnit === "imperial") {
+      setPreferredUnit("metric");
+    }
+  }
 
   useEffect(() => {
     console.log("main - weather is: ", weather);  
@@ -106,7 +115,9 @@ const Main = () => {
             currentWeather={weather.current}
             preferredUnit={preferredUnit}
             airQuality={weather.pollution}
+            toggleUnits={toggleUnits}
           />
+          <AirQuality airQuality={weather.pollution} />
         </div>
         <div className="lower-container">
           <HourlyForecastContainer
