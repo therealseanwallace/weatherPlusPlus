@@ -4,22 +4,15 @@ import express from 'express';
 import cors from 'cors';
 import weatherRouter from './routes/weatherRouter.js';
 import rateLimit from 'express-rate-limit';
+import compression from 'compression';
+import helmet from 'helmet';
 
 const app = express();
 
-/*const corsOptions = {
-  origin(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};*/
-
 app.use(cors());
 app.use(express.json());
+app.use(compression());
+app.use(helmet());
 
 const PORT = 3001;
 const whitelist = ['http://localhost:3000'];
@@ -34,11 +27,6 @@ const apiRequestLimiter = rateLimit({
 });
 
 app.use('/api', apiRequestLimiter);
-
-app.get('/ping', (_req, res) => {
-  console.log(`someone pinged here!!${new Date()}`);
-  res.send('pong');
-});
 
 app.use('/api/weather', weatherRouter);
 
