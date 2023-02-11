@@ -6,6 +6,9 @@ import weatherRouter from './routes/weatherRouter.js';
 import rateLimit from 'express-rate-limit';
 import compression from 'compression';
 import helmet from 'helmet';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -15,8 +18,6 @@ app.use(compression());
 app.use(helmet());
 
 const PORT = 3001;
-const whitelist = ['http://localhost:3000'];
-
 
 app.use('/public', express.static('public'));
 
@@ -36,7 +37,7 @@ app.listen(PORT, () => {
 
 // Mongoose //
 
-const MONGO_URL = 'mongodb://localhost:27017/Weather';
+const MONGO_URL = process.env.MONGO_URL;
 
 async function connect() {
   try {
