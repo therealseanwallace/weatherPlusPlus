@@ -25,7 +25,7 @@ function Main() {
 
   const showStateifUS = () => {
     const country = document.querySelector(".crs-country");
-    if (country.value === "United States") {
+    if (country.value === "US") {
       document.querySelector(".crs-state").classList.remove("hidden");
       document.querySelector(".state-spacer").classList.add("hidden");
     } else {
