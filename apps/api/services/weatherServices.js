@@ -25,7 +25,6 @@ const getLocation = async (name, country, state) => {
         }
       );
       console.log('got location! result is: ', result);
-      console.log('result.json is: ', result.json());
       return result;
     }
     result = await fetch(
@@ -35,7 +34,6 @@ const getLocation = async (name, country, state) => {
       }
     );
     console.log('got location! result is: ', result);
-    console.log('result.json is: ', result.json());
     return result;
   } catch (error) {
     return error.message;
@@ -237,6 +235,7 @@ const composeResponse = async (args) => {
   }
 
   const locationJSON = await location.json();
+  console.log('got location. locationJSON: ', locationJSON);
   if (locationJSON.length === 0) {
     return 404;
   }
