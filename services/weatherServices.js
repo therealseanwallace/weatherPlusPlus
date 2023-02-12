@@ -239,8 +239,8 @@ const composeResponse = async (args) => {
   if (locationJSON.length === 0) {
     return 404;
   }
-  const lat = locationJSON[0].lat.toFixed(4);
-  const long = locationJSON[0].lon.toFixed(4);
+  const lat = Number(locationJSON[0].lat.toFixed(4));
+  const long = Number(locationJSON[0].lon.toFixed(4));
   const correctedName = locationJSON[0].name;
   const checkEntry = await checkIfDBEntryExistsAndReturnEntry(lat, long);
   let newOrUpdatedEntry;
