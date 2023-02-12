@@ -18,10 +18,11 @@ const getWeather = async (name, country, state) => {
       stateToSend = "none";
     }
     weather = await fetch(
-      `http://localhost:3001/api/weather/name/${name}/country/${country}/state/${stateToSend}`,
+      `http://weatherplusplus-production.up.railway.app:3001/api/weather/name/${name}/country/${country}/state/${stateToSend}`,
+      //`http://localhost:3001/api/weather/name/${name}/country/${country}/state/${stateToSend}`,
       {
         method: "GET",
-        mode: "cors",
+        mode: "no-cors",
       }
     );
     if (weather.status === 429) {
