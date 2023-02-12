@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(compression());
 app.use(helmet());
 
-const PORT = 3001;
+const PORT = process.env.PORT;
 
 app.use('/public', express.static('public'));
 
