@@ -24,7 +24,7 @@ const getLocation = async (name, country, state) => {
           mode: "cors",
         }
       );
-
+      console.log('got location! result is: ', result);
       return result;
     }
     result = await fetch(
@@ -33,7 +33,7 @@ const getLocation = async (name, country, state) => {
         mode: "cors",
       }
     );
-
+    console.log('got location! result is: ', result);
     return result;
   } catch (error) {
     return error.message;
