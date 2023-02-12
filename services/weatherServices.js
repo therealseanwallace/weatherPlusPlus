@@ -25,6 +25,7 @@ const getLocation = async (name, country, state) => {
         }
       );
       console.log('got location! result is: ', result);
+      console.log('result.json is: ', result.json());
       return result;
     }
     result = await fetch(
@@ -34,6 +35,7 @@ const getLocation = async (name, country, state) => {
       }
     );
     console.log('got location! result is: ', result);
+    console.log('result.json is: ', result.json());
     return result;
   } catch (error) {
     return error.message;
