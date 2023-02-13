@@ -17,6 +17,8 @@ app.use(express.json());
 app.use(compression());
 app.use(helmet());
 
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
 const PORT = process.env.PORT;
 
 app.use('/public', express.static('public'));
