@@ -17,8 +17,11 @@ function Main() {
 
   async function submitLocation(e) {
     e.preventDefault();
-    const newWeather = await getWeather(name, country, region);
+    let newWeather = await getWeather(name, country, region);
     console.log('weather retrieved by main. newWeather is: ', newWeather);
+    if (Array.isArray(newWeather)) {
+      newWeather = newWeather[0];
+    }
     setWeather(await newWeather);
     
   }

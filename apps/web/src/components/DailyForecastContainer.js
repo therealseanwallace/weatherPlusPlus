@@ -10,7 +10,7 @@ const DailyForecastContainer = (props) => {
       <div className={"daily-forecast-inner-container future-forecast-inner-container"}>
         {props.daily.map((forecast) => {
           return (
-            <div key={forecast.dt.dt}>
+            <div key={forecast.dt}>
               <DailyForecast
                 forecast={forecast}
                 dt={forecast.dt}

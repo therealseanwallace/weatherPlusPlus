@@ -13,7 +13,7 @@ const HourlyForecastContainer = (props) => {
             forecast.dt
           );
           return (
-            <div key={forecast.dt.dt}>
+            <div key={forecast.dt}>
               <HourlyForecast
                 forecast={forecast}
                 preferredUnit={props.preferredUnit}

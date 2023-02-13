@@ -35,9 +35,9 @@ const CurrentWeather = (props) => {
       <h3 className="current-weather-name">{cityName}</h3>
       <div className="toggle-container">
         <p>Units: </p>
-        <label class="switch">
+        <label className="switch">
           <input type="checkbox" onClick={props.toggleUnits} />
-          <span class="slider" />
+          <span className="slider" />
         </label>
       </div>
 

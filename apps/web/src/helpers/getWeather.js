@@ -18,7 +18,7 @@ const getWeather = async (name, country, state) => {
       stateToSend = "none";
     }
     weather = await fetch(
-      `http://localhost:3001/api/weather/name/${name}/country/${country}/state/${stateToSend}`,      
+      `https://guarded-reaches-85062.herokuapp.com/api/weather/name/${name}/country/${country}/state/${stateToSend}`,      
       {
         method: "GET",
         mode: "cors",
