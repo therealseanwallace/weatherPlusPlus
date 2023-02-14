@@ -5,10 +5,11 @@ const AirQuality = (props) => {
   return (
     <div className="air-quality">
       <h2>Air Quality</h2>
-      <h3>AQI: {props.airQuality.aqi}</h3>
+      <h3>Air Quality Index: {props.airQuality.aqi}</h3>
+      <h2>Components (μg/m3)</h2>
       <h3>CO: {props.airQuality.co}</h3>
       <h3>NH3: {props.airQuality.nh3}</h3>
-      <h3>NO {props.airQuality.no}</h3>
+      <h3>NO: {props.airQuality.no}</h3>
       <h3>NO2: {props.airQuality.no2}</h3>
       <h3>O3: {props.airQuality.o3}</h3>
       <h3>SO2: {props.airQuality.so2}</h3>
