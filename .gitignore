@@ -10,6 +10,9 @@
 # testing
 /coverage
 
+# production
+/apps/web/build
+
 # misc
 .DS_Store
 .env.local
