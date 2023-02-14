@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/weatherPlusPlus/static/css/main.036039e2.css",
+    "main.js": "/weatherPlusPlus/static/js/main.497f62ad.js",
+    "index.html": "/weatherPlusPlus/index.html",
+    "main.036039e2.css.map": "/weatherPlusPlus/static/css/main.036039e2.css.map",
+    "main.497f62ad.js.map": "/weatherPlusPlus/static/js/main.497f62ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.036039e2.css",
+    "static/js/main.497f62ad.js"
+  ]
+}
