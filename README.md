@@ -10,7 +10,9 @@ My backend uses Open Weather Map's One Call API to retrieve data for a city, sto
 
 The server also implements rate-limiting to stop users from using my allowance of free API requests.
 
-# [Live](https://therealseanwallace.github.io/battleship)
+# [Live](https://therealseanwallace.github.io/weatherPlusPlus)
+
+NOTE: Because of the way this app is deployed on Heroku, the first request may be a little slow as the backend starts up!
     
 ## Learning objectives:
     
