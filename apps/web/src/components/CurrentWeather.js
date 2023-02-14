@@ -33,6 +33,11 @@ const CurrentWeather = (props) => {
   return (
     <div className="current-weather-container">
       <h3 className="current-weather-name">{cityName}</h3>
+      <h2 className="current-weather-temp">{temp}</h2>
+
+      <h3 className="current-weather-desc">
+        {props.currentWeather.weather.description}
+      </h3>
       <div className="toggle-container">
         <p>Units: </p>
         <label className="switch">
@@ -40,11 +45,6 @@ const CurrentWeather = (props) => {
           <span className="slider" />
         </label>
       </div>
-
-      <h2 className="current-weather-temp">{temp}</h2>
-      <h3 className="current-weather-desc">
-        {props.currentWeather.weather.description}
-      </h3>
       <div className="current-weather-high-low">
         <h3>⬆️ {max}</h3>
         <h3>⬇️ {min}</h3>
