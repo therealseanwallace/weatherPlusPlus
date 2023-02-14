@@ -18,10 +18,10 @@ NOTE: Because of the way this app is deployed on Heroku, the first request may b
     
   Develop skills in:
 
-  NodeJS
-  Express and various Express middleware
-  MongoDB and Mongoose
-  Heroku
+  * NodeJS
+  * Express and various Express middleware
+  * MongoDB and Mongoose
+  * Heroku
 
 
 ## Acknowledgements
