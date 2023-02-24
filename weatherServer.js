@@ -15,9 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(compression());
-app.use(helmet({crossOriginEmbedderPolicy: false }));
 
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 const PORT = process.env.PORT;
 
